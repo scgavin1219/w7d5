@@ -14,8 +14,16 @@
 <button>Edit</button>
 </form>
 
-<%end%>
-
 <% @sub.posts.each do |post| %>
     <%= post.title %>
+
+<form action="<%= edit_sub_post_url(post.id)%>" method="GET">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<button>Edit Post</button>
+</form>
+
 <% end %>
+<%end%>
+
+
