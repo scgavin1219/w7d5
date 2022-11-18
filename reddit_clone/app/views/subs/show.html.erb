@@ -1,0 +1,17 @@
+<h2> Subs 4 U </h2>
+
+
+<%= @sub.title %>
+<%= @sub.description %>
+
+<% if logged_in? && current_user.id == @sub.moderator_id %>
+<form action="<%= edit_sub_url(@sub.id)%>" method="GET">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+<button>Edit</button>
+</form>
+
+
+
+<%end%>
+

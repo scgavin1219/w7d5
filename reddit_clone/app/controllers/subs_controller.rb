@@ -38,6 +38,13 @@ class SubsController < ApplicationController
         render :index
     end
 
+    def show
+        @user = current_user
+        @sub = Sub.find_by(id: params[:id])
+        render :show
+    end
+
+
     private 
     def sub_params
         params.require(:sub).permit(:title, :description, :moderator_id)
