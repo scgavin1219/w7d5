@@ -1,8 +1,11 @@
-<h2> Subs 4 U </h2>
+<h2> Subs 4 U <%= current_user.username %></h2>
 
 
-<%= @sub.title %>
+<strong><%= @sub.title %></strong>
+<br>
 <%= @sub.description %>
+<br>
+<br>
 
 <% if logged_in? && current_user.id == @sub.moderator_id %>
 <form action="<%= edit_sub_url(@sub.id)%>" method="GET">
@@ -11,7 +14,8 @@
 <button>Edit</button>
 </form>
 
-
-
 <%end%>
 
+<% @sub.posts.each do |post| %>
+    <%= post.title %>
+<% end %>

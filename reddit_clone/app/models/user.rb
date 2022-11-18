@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     validates :session_token, uniqueness: true
@@ -10,6 +21,11 @@ class User < ApplicationRecord
     has_many :subs, 
         foreign_key: :moderator_id,
         class_name: :Sub,
+        dependent: :destroy
+
+    has_many :posts,
+        foreign_key: :author_id,
+        class_name: :Post,
         dependent: :destroy
 
     def self.find_by_credentials(username, password)

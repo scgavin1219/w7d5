@@ -18,6 +18,7 @@ class SubsController < ApplicationController
 
     def edit
         @sub = Sub.find_by(id: params[:id])
+        @user = current_user
         render :edit
     end
 
@@ -39,7 +40,6 @@ class SubsController < ApplicationController
     end
 
     def show
-        @user = current_user
         @sub = Sub.find_by(id: params[:id])
         render :show
     end
