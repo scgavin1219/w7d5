@@ -7,8 +7,9 @@ class SubsController < ApplicationController
 
     def create
         @sub = Sub.new(sub_params)
+        @sub.moderator_id = current_user.id
         if @sub && @sub.save
-            redirect_to sub_url
+            redirect_to sub_url(@sub.id)
         else
             flash.now[:errors] = @sub.errors.full_messages
             render :new
@@ -39,8 +40,8 @@ class SubsController < ApplicationController
 
     private 
     def sub_params
-        params.require(:sub).permit(:title, :description)
+        params.require(:sub).permit(:title, :description, :moderator_id)
     end
-
+#params{sub{title=>..., description=>""}}
 
 end

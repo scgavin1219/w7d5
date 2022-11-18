@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-user1 = User.create!(username: 'scgavin12', password: 'baseball12' )
-user2 = User.create!(username: 'chadmander', password: 'password' )
+user1 = User.create!(username: 'scgavin122', password: 'baseball12' )
+user2 = User.create!(username: 'charmander', password: 'password' )
 
 sub1 = Sub.create(title: 'fav pokemon' , description: 'idk, there are over 150', moderator_id: 1 )
 sub2 = Sub.create(title: 'videogames' , description: 'No time', moderator_id: 2 )
